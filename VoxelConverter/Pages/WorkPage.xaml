@@ -1,0 +1,126 @@
+﻿<Page x:Class="VoxelConverter.WorkPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VoxelConverter"
+      mc:Ignorable="d" 
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+     Title="Start">
+
+    <Grid>
+        <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.5}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <TabControl Grid.Row="0" Grid.Column="2" Style="{DynamicResource MaterialDesignTabControl}">
+                    <TabItem Header="Тип блоков">
+                        <Grid >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListBox SelectionChanged="VoxelsTypeListBox_SelectionChanged" Grid.ColumnSpan="2" Name="VoxelsTypeListBox" Margin="15,15,15,15" Style="{DynamicResource MaterialDesignChoiceChipListBox}" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                                <Button  Grid.Column="0" Grid.Row="2" Click="AddVoxelType_Click" Name ="AddVoxelType" Content="Добавить тип" Width="140" Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                                <Button  Grid.Column="1" Grid.Row="2" Click="RemoveVoxelType_Click" Name ="RemoveVoxelType" Content="Удалить тип" Width="140"  Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Тип направлений">
+                        <Grid >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="10*"/>
+                                    <RowDefinition Height="2*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                </Grid.ColumnDefinitions>
+                                <ListBox SelectionChanged="DirTypeListBox_SelectionChanged" Grid.ColumnSpan="2" Name="DirTypeListBox" Margin="15,15,15,15" Style="{DynamicResource MaterialDesignChoiceChipListBox}" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                                <Button  Grid.Column="0" Grid.Row="2" Click="AddDirType_Click" Name ="AddDirType" Content="Добавить тип" Width="140" Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                                <Button  Grid.Column="1" Grid.Row="2" Click="RemoveDirType_Click" Name ="RemoveDirType" Content="Удалить тип" Width="140"  Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+               
+                <Grid Grid.Row="1" Grid.Column="2" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="15" Margin="10,0,0,0">Тайлы:</Label>
+                    <ListBox Grid.ColumnSpan="2" SelectionChanged="TilesListBox_SelectionChanged" Name="TilesListBox" Margin="15,15,15,15" Style="{DynamicResource MaterialDesignNavigationListBox}" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                    <Button Grid.Row="2" Click="RemoveTileButton_Click" Name ="RemoveTileButton" Content="Удалить тайл" Width="140"  Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                </Grid>
+                <Grid Grid.RowSpan="2">
+                    <StackPanel>
+                        <Expander Margin="5,0,10,0" Grid.Row="0" Header="Файл" Style="{DynamicResource MaterialDesignExpander}">
+                            <StackPanel Margin="5,0,0,0">
+                                <Button Content="Сохранить" Margin="0,5,0,0" Click="SaveXmlFileButton_Click" Name="SaveXmlFileButton"/>
+                                <Button Content="Сохранить как" Margin="0,5,0,0" Click="SaveXmlAsFileButton_Click" Name="SaveXmlAsFileButton" Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="5,0,10,0" Grid.Row="1" Header="Загрузка тайла" Style="{DynamicResource MaterialDesignExpander}">
+                            <StackPanel Margin="5,0,0,0">
+                                <TextBox materialDesign:HintAssist.Hint="Ссылка на PLY" TextWrapping="Wrap" 
+                                    Text="" Grid.Column="0" Grid.Row="0"  
+                                    Name="CurrentPlyTextBox"
+                                    Style="{DynamicResource MaterialDesignFloatingHintTextBox}"/>
+                                <Button Click="AddPlyFileButton_Click" Content="Обзор" Margin="0,5,0,0" Name="AddPlyFileButton"  Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                                <Button Content="Добавить" Margin="0,5,0,0" Name="LoadPlyFileButton" Click="LoadPlyFileButton_Click"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="5,0,10,0" Grid.Row="0" Header="Инфо" Style="{DynamicResource MaterialDesignExpander}">
+                            <StackPanel Margin="5,0,0,0">
+                                <Button Content="О файле" Margin="0,5,0,0" Click="XmlInfoButton_Click" Name="XmlInfoButton" Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                                <Button Content="О проекте" Margin="0,5,0,0" Click="ProjectInfoButton_Click" Name="ProjectInfoButton" Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                            </StackPanel>
+                        </Expander>
+                        <Expander Margin="5,0,10,0" Grid.Row="0" Header="Экспорт" Style="{DynamicResource MaterialDesignExpander}">
+                            <StackPanel Margin="5,0,0,0">
+                                <Button Content="XML" Margin="0,5,0,0" Click="XmlExportButton_Click" Name="XmlExportButton" Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                            </StackPanel>
+                        </Expander>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1" Grid.RowSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="1" Margin="25,0,25,0" Name="InfoTextBlock"></TextBlock>
+                </Grid>
+                <Border BorderBrush="LightGray" BorderThickness="1" Grid.Column="2" Margin="0,30,0,30" HorizontalAlignment="Left" Grid.RowSpan="2" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}" />
+                <Border BorderBrush="LightGray" BorderThickness="1" Grid.Column="1" Margin="0,30,0,30" HorizontalAlignment="Left" Grid.RowSpan="2" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}" />
+                <Border BorderBrush="LightGray" BorderThickness="1" Grid.Column="2" Margin="0,0,30,0" VerticalAlignment="Top" Grid.Row="1" Style="{DynamicResource MaterialDesignToolBarMainPanelBorderStyle}" />
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</Page>

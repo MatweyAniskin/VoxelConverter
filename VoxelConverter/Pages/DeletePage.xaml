@@ -1,0 +1,38 @@
+﻿<Page x:Class="VoxelConverter.Pages.DeletePage"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:VoxelConverter"      
+    mc:Ignorable="d"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+    Title="Start">
+    <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect SlideInFromRight, Duration=0:0:0.5}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="8*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="12*"/>
+                <RowDefinition Height="12*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <Label Name="InfoLabel" Content="" FontSize="25" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignLabel}"/>
+                <Button Name ="YesButton" Click="YesButton_Click" Content="Да" Width="140" Margin="0,10,0,0" Style="{DynamicResource MaterialDesignFlatDarkButton}"/>
+                <Button Name = "NoButton" Click="NoButton_Click" Content="Нет" Width="140" Margin="0,15,0,0"/>
+            </StackPanel>
+
+        </Grid>
+    </materialDesign:TransitioningContent>
+</Page>
