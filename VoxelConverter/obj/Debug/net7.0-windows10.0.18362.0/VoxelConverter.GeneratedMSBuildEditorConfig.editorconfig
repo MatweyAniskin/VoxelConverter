@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = VoxelConverter
-build_property.ProjectDir = C:\Users\Admin\Downloads\VoxelConverter\VoxelConverter\
+build_property.ProjectDir = D:\VS Projects\VoxelConverter\VoxelConverter\

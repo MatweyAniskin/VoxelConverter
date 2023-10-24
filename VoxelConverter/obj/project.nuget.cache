@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J/oet4vcD4piAGlTjAckvmbXKX4cPq7mf61cYxYnBcv7T9u08nY3qtdrN5jCeF6HCiNvUYEPlS1/G/Pqr7srIw==",
+  "dgSpecHash": "DevFVI1ho+2QDuvrHg5QKwIP6eGf6/3XqxbETbYFUXoQEBOEjxXPPk6wg70Bymu7WflmpbGY2qMYIoUpJYDwfA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Downloads\\VoxelConverter\\VoxelConverter\\VoxelConverter.csproj",
+  "projectFilePath": "D:\\VS Projects\\VoxelConverter\\VoxelConverter\\VoxelConverter.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\costura.fody\\5.7.0\\costura.fody.5.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\fody\\6.5.5\\fody.6.5.5.nupkg.sha512",

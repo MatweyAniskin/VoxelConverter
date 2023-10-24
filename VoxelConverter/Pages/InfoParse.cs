@@ -73,12 +73,12 @@ namespace VoxelConverter.Pages
             {
                 InfoTextBlock.Inlines.Add(new Run($"\n{direction}"));
             }            
-            InfoTextBlock.Inlines.Add(new Run("\n\nБлоки: \n") { FontWeight = FontWeights.Bold });            
+          /*  InfoTextBlock.Inlines.Add(new Run("\n\nБлоки: \n") { FontWeight = FontWeights.Bold });            
             foreach (var block in tile.Blocks)
             {
                 InfoTextBlock.Inlines.Add(new Run($"{block.Type}; ") { FontWeight = FontWeights.Bold });
                 InfoTextBlock.Inlines.Add(new Run($"x ={block.X}; y ={block.Y}; z ={block.Z}\n"));
-            }
+            }*/
         }
         public static void SetDirectionInfo(DirectionType type)
         {
