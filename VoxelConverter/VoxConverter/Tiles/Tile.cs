@@ -9,13 +9,15 @@ using VoxelConverter.VoxConverter.ModelObject;
 namespace VoxelConverter.VoxConverter.Tiles
 {
     public class Tile : SimpleObject
-    {       
+    {    
+        public string Property { get; protected set; }
         public IEnumerable<Block> Blocks { protected set; get; }
         public IEnumerable<TileDirection> Directions { protected set; get; }
-        public Tile(string title, IEnumerable<Block> blocks, IEnumerable<TileDirection> directions) : base(title)
+        public Tile(string title, string property,IEnumerable<Block> blocks, IEnumerable<TileDirection> directions) : base(title)
         {          
             this.Blocks = blocks;
             Directions = directions;
+            Property = property;
             int minX = 0;
             int minY = 0;
             int minZ = 0;

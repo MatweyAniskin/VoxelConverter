@@ -63,7 +63,8 @@ namespace VoxelConverter.Pages
             tileDirections.Add(new TileDirection((DirectionType)DownDirectionList.SelectedItem, TileDirection.DirectionType.Up));
             tileDirections.Add(new TileDirection((DirectionType)LeftDirectionList.SelectedItem, TileDirection.DirectionType.Left));
             string title = System.IO.Path.GetFileNameWithoutExtension(path);
-            TileRepository.AddTile(title, blocks, tileDirections);
+            string property = propertyBox.Text;
+            TileRepository.AddTile(title, property, blocks, tileDirections);
 
             ToWork();
         }

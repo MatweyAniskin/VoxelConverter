@@ -28,7 +28,7 @@ namespace VoxelConverter.Pages
             InfoTextBlock.Inlines.Add(new Run(FileConverter.CurrentFileName));
             InfoTextBlock.Inlines.Add(new Run("\n"));
             InfoTextBlock.Inlines.Add(new Run("Размер проекта: ") { FontWeight = FontWeights.Bold });
-            InfoTextBlock.Inlines.Add(new Run(FileConverter.FileSize + " байт"));
+            InfoTextBlock.Inlines.Add(new Run(Convert.ToInt32(FileConverter.FileSize)/1048576 + " Мб"));
         }
         public static void SetProjectInfo()
         {
@@ -66,7 +66,9 @@ namespace VoxelConverter.Pages
             InfoTextBlock.Inlines.Add(new Run(tile.Blocks.Count().ToString()));
             InfoTextBlock.Inlines.Add(new Run("\n"));
             InfoTextBlock.Inlines.Add(new Run("Размер тайла: ") { FontWeight = FontWeights.Bold });
-            InfoTextBlock.Inlines.Add(new Run(tile.Scale));
+            InfoTextBlock.Inlines.Add(new Run("\n"));
+            InfoTextBlock.Inlines.Add(new Run("Свойство: ") { FontWeight = FontWeights.Bold });
+            InfoTextBlock.Inlines.Add(new Run(tile.Property));
             InfoTextBlock.Inlines.Add(new Run("\n"));
             InfoTextBlock.Inlines.Add(new Run("Направления: ") { FontWeight = FontWeights.Bold });
             foreach(TileDirection direction in tile.Directions)

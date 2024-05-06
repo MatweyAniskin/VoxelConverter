@@ -93,7 +93,8 @@ namespace VoxelConverter.VoxConverter.File
             string y;
             string z;
             string type;
-            string name = element.Attributes["Name"].InnerText;
+            string name = element.Attributes["Name"]?.InnerText ?? "Undefiend";
+            string propery = element.Attributes["Property"]?.InnerText ?? "None";
             int dirType;
             string dirName;
             foreach (XmlNode dir in element.GetElementsByTagName("Direction"))
@@ -110,7 +111,7 @@ namespace VoxelConverter.VoxConverter.File
                 type = block.InnerText.Trim();
                 blocks.Add(new Block(x, y, z, type));
             }
-            TileRepository.AddTile(new Tile(name, blocks,directions));
+            TileRepository.AddTile(new Tile(name, propery, blocks,directions));
         }        
         public static bool SaveXmlFile(string path)
         {
@@ -198,13 +199,15 @@ namespace VoxelConverter.VoxConverter.File
         {
             List<XElement> tiles = new List<XElement>();
             XElement tileElement;
+            XElement tileProperty;
             XAttribute tileName;
 
             foreach (Tile tile in TileRepository.GetTiles())
             {
                 tileElement = new XElement("Tile");
                 tileName = new XAttribute("Name",tile.Title);
-                tileElement.Add(tileName, GetDirection(tile),GetBlock(tile));
+                tileProperty = new XElement("Property",tile.Property);
+                tileElement.Add(tileName,tileProperty, GetDirection(tile),GetBlock(tile));
                 tiles.Add(tileElement);
             }
             return tiles;

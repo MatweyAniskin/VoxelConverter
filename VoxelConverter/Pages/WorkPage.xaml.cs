@@ -32,7 +32,7 @@ namespace VoxelConverter
             openPlyFileDialog.Filter = "*.ply|*.ply";
         }
         void UpdateList(IEnumerable<SimpleObject> objects, ListBox list)
-        {
+        {            
             foreach (var i in objects)
                 list.Items.Add(i);
         }

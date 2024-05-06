@@ -9,7 +9,7 @@ namespace VoxelConverter.VoxConverter.Tiles
     {
         static List<Tile> tiles = new List<Tile>();
         public static void AddTile(Tile tile) => tiles.Add(tile);
-        public static void AddTile(string title, IEnumerable<Block> blocks, IEnumerable<TileDirection> tileDirections) => tiles.Add(new Tile(title,blocks, tileDirections));
+        public static void AddTile(string title, string property, IEnumerable<Block> blocks, IEnumerable<TileDirection> tileDirections) => tiles.Add(new Tile(title, property, blocks, tileDirections));
         public static void RemoveTile(Tile tile) => tiles.Remove(tile);
         public static void RemoveTile(SimpleObject tile) => tiles.Remove((Tile)tile);
         public static List<Tile> GetTiles() => tiles;
